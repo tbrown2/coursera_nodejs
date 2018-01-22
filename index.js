@@ -3,14 +3,19 @@
 var rect = require('./rectangle');
 
 function solveRect(l,b) {
-	if (l <= 0 || b <= 0) {
-      console.log("Rectangle dimensions should be greater than zero:  l = " + l + ",  and b = " + b);
-    }
-    else {
-		console.log("Solving for rectangle with l = " + l +" and b = " + b);
-		console.log("Perimeter: " + rect.perimeter(l,b));
-		console.log("Area: " + rect.area(l,b));
-	}
+	console.log("Solving for rectangle with l = " + l +" and b = " + b);
+	//passing callback function into our rectangle.js module
+	//our callback function will be executed after set time out of 2 seconds
+	rect(l, b , (err, rectangle) => {
+		if (err) {
+			console.log("Error: " + err.message)
+		}
+		else {
+			console.log("Area: " + rectangle.area());
+			console.log("Perimeter: " + rectangle.perimeter());
+		}
+	});
+	console.log("this statement is written after solRect, but will execute before because of asynchronous.");
 }
 
 solveRect(2,4);
