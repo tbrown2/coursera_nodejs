@@ -1,8 +1,6 @@
 //simple js object with 2 functions
-var rect = {
-	perimeter: (x,y) => (2*(x+y)),
-	area: (x,y) => (x*y)
-};
+//imports our rectangle node module
+var rect = require('./rectangle');
 
 function solveRect(l,b) {
 	if (l <= 0 || b <= 0) {
